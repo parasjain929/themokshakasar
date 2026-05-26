@@ -1,0 +1,309 @@
+/* ============================================
+   ANIMATIONS.CSS — The Moksha Retreat
+   ============================================ */
+
+/* ---- Keyframes ---- */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes waPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(37,211,102,0.55); }
+  60%  { box-shadow: 0 0 0 16px rgba(37,211,102,0); }
+  100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes heroKenBurns {
+  0%   { transform: scale(1.05) translateX(0) translateY(0); }
+  50%  { transform: scale(1.10) translateX(-1%) translateY(-0.5%); }
+  100% { transform: scale(1.05) translateX(0) translateY(0); }
+}
+
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+
+@keyframes counterPop {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+/* ---- Scroll Reveal (IntersectionObserver classes) ---- */
+
+/* Base state: elements are hidden before reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 0.75s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Directional variants */
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition:
+    opacity 0.75s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.reveal-left.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition:
+    opacity 0.75s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.reveal-right.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.93);
+  transition:
+    opacity 0.75s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.reveal-scale.revealed {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Stagger delay helpers (applied to children with JS) */
+.stagger-children > * {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.stagger-children.revealed > *:nth-child(1)  { transition-delay: 0ms;   opacity:1; transform:translateY(0); }
+.stagger-children.revealed > *:nth-child(2)  { transition-delay: 80ms;  opacity:1; transform:translateY(0); }
+.stagger-children.revealed > *:nth-child(3)  { transition-delay: 160ms; opacity:1; transform:translateY(0); }
+.stagger-children.revealed > *:nth-child(4)  { transition-delay: 240ms; opacity:1; transform:translateY(0); }
+.stagger-children.revealed > *:nth-child(5)  { transition-delay: 320ms; opacity:1; transform:translateY(0); }
+.stagger-children.revealed > *:nth-child(6)  { transition-delay: 400ms; opacity:1; transform:translateY(0); }
+.stagger-children.revealed > *:nth-child(7)  { transition-delay: 480ms; opacity:1; transform:translateY(0); }
+.stagger-children.revealed > *:nth-child(8)  { transition-delay: 560ms; opacity:1; transform:translateY(0); }
+.stagger-children.revealed > *:nth-child(9)  { transition-delay: 640ms; opacity:1; transform:translateY(0); }
+.stagger-children.revealed > *:nth-child(10) { transition-delay: 720ms; opacity:1; transform:translateY(0); }
+.stagger-children.revealed > *:nth-child(11) { transition-delay: 800ms; opacity:1; transform:translateY(0); }
+.stagger-children.revealed > *:nth-child(12) { transition-delay: 880ms; opacity:1; transform:translateY(0); }
+
+/* ---- Parallax Base ---- */
+.parallax-container {
+  overflow: hidden;
+  position: relative;
+}
+.parallax-img {
+  will-change: transform;
+  transform: translateY(0px);
+  transition: transform 0.08s linear;
+}
+
+/* ---- Hero Animation ---- */
+.hero-bg img {
+  animation: heroKenBurns 20s ease-in-out infinite;
+}
+
+/* ---- Card hover lift ---- */
+.card-lift {
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base);
+}
+.card-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-xl);
+}
+
+/* ---- Image zoom on hover ---- */
+.img-zoom-wrap {
+  overflow: hidden;
+  display: block;
+}
+.img-zoom-wrap img {
+  transition: transform var(--transition-slow);
+}
+.img-zoom-wrap:hover img {
+  transform: scale(1.07);
+}
+
+/* ---- Smooth all transitions ---- */
+a, button, input, select, textarea, label {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ---- Page transition overlay ---- */
+.page-transition {
+  position: fixed;
+  inset: 0;
+  background: var(--clay);
+  z-index: 9999;
+  transform: translateY(100%);
+  pointer-events: none;
+}
+.page-transition.leaving {
+  animation: pageLeave 0.45s cubic-bezier(0.8, 0, 0.2, 1) forwards;
+}
+.page-transition.entering {
+  animation: pageEnter 0.45s cubic-bezier(0.8, 0, 0.2, 1) forwards;
+}
+
+@keyframes pageLeave {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+@keyframes pageEnter {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-100%); }
+}
+
+/* ---- Number counter animation ---- */
+.counter-num {
+  display: inline-block;
+  transition: transform 0.3s var(--transition-spring);
+}
+.counter-num.popping {
+  animation: counterPop 0.4s var(--transition-spring);
+}
+
+/* ---- Float animation (for decorative elements) ---- */
+.float {
+  animation: floatY 4s ease-in-out infinite;
+}
+
+/* ---- Skeleton loading ---- */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--sand-light) 0%,
+    var(--sand) 40%,
+    var(--sand-light) 80%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 1.6s infinite linear;
+  border-radius: var(--radius-sm);
+}
+
+/* ---- Fade-in on load for above-fold elements ---- */
+.fade-in-load {
+  animation: fadeIn 1s ease both;
+}
+.fade-in-load-delay-1 { animation: fadeIn 1s 0.2s ease both; }
+.fade-in-load-delay-2 { animation: fadeIn 1s 0.4s ease both; }
+.fade-in-load-delay-3 { animation: fadeIn 1s 0.6s ease both; }
+
+/* ---- Smooth image placeholder ---- */
+img {
+  transition: opacity 0.3s ease;
+}
+img.lazy-load {
+  opacity: 0;
+}
+img.lazy-load.loaded {
+  opacity: 1;
+}
+
+/* ---- Cursor highlight ---- */
+::selection {
+  background: rgba(124,74,43,0.20);
+  color: var(--clay-dark);
+}
+
+/* ---- Focus visible ring ---- */
+:focus-visible {
+  outline: 2px solid var(--clay);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* ---- Reduced motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html { scroll-behavior: auto; }
+}
