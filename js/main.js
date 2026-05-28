@@ -6,10 +6,9 @@
 'use strict';
 
 /* ============================================================
-   UTILITY HELPERS
+   UTILITY HELPERS (already defined in animations.js)
    ============================================================ */
-const $ = (sel, ctx = document) => ctx.querySelector(sel);
-const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
+// $ and $$ are already defined in animations.js, no need to redefine
 
 /* ============================================================
    1. SCROLL PROGRESS INDICATOR
